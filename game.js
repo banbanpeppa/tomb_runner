@@ -25491,7 +25491,8 @@ var Detector = {
         a.style.color = "#000";
         a.style.padding = "1.5em";
         if (!this.webgl) {
-            a.innerHTML = window.WebGLRenderingContext ? ['Your graphics card does not seem to support <a href="http://get.webgl.org/" style="color:#000">WebGL</a>.<br />', "Please update your browser or operation system."].join("\n") : ['Your browser does not seem to support <a href="http://get.webgl.org/" style="color:#000">WebGL</a>.<br/>', "Please update your browser or operation system."].join("\n")
+            //a.innerHTML = window.WebGLRenderingContext ? ['Your graphics card does not seem to support <a href="http://get.webgl.org/" style="color:#000">WebGL</a>.<br />', "Please update your browser or operation system."].join("\n") : ['Your browser does not seem to support <a href="http://get.webgl.org/" style="color:#000">WebGL</a>.<br/>', "Please update your browser or operation system."].join("\n")
+            a.innerHTML = b
         } else {
             a.innerHTML = b
         }
