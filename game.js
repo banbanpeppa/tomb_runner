@@ -33037,7 +33037,7 @@ GEMIOLI.Score = function() {
         }
         GEMIOLI.SoundLoader.load("button").play();
         GEMIOLI.Cross.show(function() {
-            a.hide();
+            //a.hide();
             GEMIOLI.Application.pushLayer(GEMIOLI.Play);
             GEMIOLI.Play.show();
             GEMIOLI.Play.fadeMusic(0.25, 1)
@@ -33067,7 +33067,7 @@ GEMIOLI.Score = function() {
         GEMIOLI.SoundLoader.load("button").play();
         GEMIOLI.Play.fadeMusic(0.25, 0);
         GEMIOLI.Cross.show(function() {
-            a.hide();
+            //a.hide();
             GEMIOLI.Application.pushLayer(GEMIOLI.Play);
             GEMIOLI.Application.pushLayer(GEMIOLI.Menu);
             GEMIOLI.Menu.show()
