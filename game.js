@@ -1,3 +1,4 @@
+// v1.0.0
 (function(c) {
     var p = (void 0);
     var o = 100000;
@@ -32692,6 +32693,7 @@ GEMIOLI.Menu = function() {
             return
         }
         a.hide();
+        console.log("a hide and menu fade, then you start the game");
         GEMIOLI.SoundLoader.load("button").play();
         GEMIOLI.Play.show()
     });
@@ -32713,6 +32715,7 @@ GEMIOLI.Menu = function() {
             return
         }
         GEMIOLI.SoundLoader.load("button").play();
+        alert("you want more games here");
         if (SpilData.moreGamesAction) {
             SpilData.moreGamesAction.call(this)
         }
@@ -33020,10 +33023,16 @@ GEMIOLI.Score = function() {
     GEMIOLI.Layer.call(this);
     var a = this;
     a.fade = GEMIOLI.AtlasQuad.fromRect(0, 0, 0, 0, "atlases/score.atlas", "fade");
-    a.addChild(a.fade);
+    a.addChild(this.fade);
     a.opacity = 0;
     a.center = new GEMIOLI.DisplayObjectContainer();
     a.addChild(a.center);
+    a.fade.addEventListener("pointerdown", function(b) {
+        if (!a.showing || GEMIOLI.Button.inFocus) {
+            return
+        }
+        a.hide()
+    });
     a.back = GEMIOLI.AtlasQuad.fromRect(-575, -629, 1171, 1259, "atlases/score.atlas", "back");
     a.center.addChild(a.back);
     a.restart = new GEMIOLI.Button(-138,-138,277,277,[32, 13, 27]);
