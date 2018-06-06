@@ -33027,12 +33027,6 @@ GEMIOLI.Score = function() {
     a.opacity = 0;
     a.center = new GEMIOLI.DisplayObjectContainer();
     a.addChild(a.center);
-    a.fade.addEventListener("pointerdown", function(b) {
-        if (!a.showing || GEMIOLI.Button.inFocus) {
-            return
-        }
-        a.hide()
-    });
     a.back = GEMIOLI.AtlasQuad.fromRect(-575, -629, 1171, 1259, "atlases/score.atlas", "back");
     a.center.addChild(a.back);
     a.restart = new GEMIOLI.Button(-138,-138,277,277,[32, 13, 27]);
@@ -33046,7 +33040,7 @@ GEMIOLI.Score = function() {
         }
         GEMIOLI.SoundLoader.load("button").play();
         GEMIOLI.Cross.show(function() {
-            //a.hide();
+            a.hide();
             GEMIOLI.Application.pushLayer(GEMIOLI.Play);
             GEMIOLI.Play.show();
             GEMIOLI.Play.fadeMusic(0.25, 1)
@@ -33076,7 +33070,7 @@ GEMIOLI.Score = function() {
         GEMIOLI.SoundLoader.load("button").play();
         GEMIOLI.Play.fadeMusic(0.25, 0);
         GEMIOLI.Cross.show(function() {
-            //a.hide();
+            a.hide();
             GEMIOLI.Application.pushLayer(GEMIOLI.Play);
             GEMIOLI.Application.pushLayer(GEMIOLI.Menu);
             GEMIOLI.Menu.show()
