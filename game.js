@@ -32716,10 +32716,10 @@ GEMIOLI.Menu = function() {
             return
         }
         GEMIOLI.SoundLoader.load("button").play();
-        alert("you want more games here");
-        if (SpilData.moreGamesAction) {
-            SpilData.moreGamesAction.call(this)
-        }
+        window.location.href='https://nebulas.io/';
+        // if (SpilData.moreGamesAction) {
+        //     SpilData.moreGamesAction.call(this)
+        // }
     });
     a.bottom.addChild(a.more);
     a.shop = new GEMIOLI.Button(-178,-167,356,335,[66]);
