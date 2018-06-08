@@ -33056,8 +33056,9 @@ GEMIOLI.Score = function() {
             return
         }
         GEMIOLI.SoundLoader.load("button").play();
-        GEMIOLI.Shop.show(a.shopAttract);
-        a.shopAttract = 0
+        alert("you got score");
+        //GEMIOLI.Shop.show(a.shopAttract);
+        //a.shopAttract = 0
     });
     a.menu = new GEMIOLI.Button(-138,-138,277,277,[77]);
     a.menu.x = -350;
