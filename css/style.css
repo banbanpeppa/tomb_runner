@@ -1,0 +1,420 @@
+/* ==== Google font ==== */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700,900);
+@import url("http://fonts.googleapis.com/css?family=Ek+Mukta:400,600,700");
+
+/* ---------------------------------------------------------------------------- */
+/* ------------------------------------Html-Body------------------------------- */
+/* ---------------------------------------------------------------------------- */
+body {
+  font-family: "Ek Mukta", sans-serif;
+  color: #666;
+  background: url(../images/wood.png) no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+}
+html,
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+::-moz-selection {
+  background: red;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: red;
+  color: #fff;
+  text-shadow: none;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+html {
+   -webkit-text-size-adjust: none;
+}
+.video embed,
+.video object,
+.video iframe {
+   width: 100%;
+    height: auto;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+}
+
+h1 {
+  font-size: 38px;
+}
+h2 {
+  font-size: 36px;
+}
+h3 {
+  font-size: 32px;
+}
+h4 {
+  font-size: 28px;
+}
+h5 {
+  font-size: 24px;
+}
+h6 {
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0 0 20px;
+  line-height: 1.3;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #e52e2e;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-bottom: 0;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+.f-right {
+  float: right;
+}
+.f-left {
+  float: left;
+}
+.t-right {
+  text-align: right;
+}
+.t-left {
+  text-align: left;
+}
+
+.post {
+}
+.post:after,
+.post:before,
+article:after,
+article:before,
+section:after,
+section:before {
+  clear: both;
+  content: "\0020";
+  display: block;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.copyrights {
+  text-indent: -9999px;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+.clear {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix:after,
+.clearfix:before {
+  clear: both;
+  content: "\0020";
+  display: block;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* --Line-- */
+.line {
+  border-bottom: 1px solid #bbb;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* --Page-- */
+body.index-page {
+}
+body.sub-page {
+  padding-top: 30px;
+  background-color: #f9f9f9;
+}
+body.sub-page .logo {
+  margin: 110px 0 80px;
+  background: url(../images/bg.jpg) fixed;
+  padding: 30px 0 50px;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* --------------------------------Header + Nav-------------------------------- */
+/* ---------------------------------------------------------------------------- */
+header {
+  text-align: center;
+}
+.logo {
+  margin: 40px 0;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* ----------------------------------Container--------------------------------- */
+/* ---------------------------------------------------------------------------- */
+.index-page,
+.sub-page {
+  margin: 20px 10px 60px;
+}
+#page-content .item {
+  background-color: #fff;
+  width: 220px;
+  box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.18);
+}
+.time {
+  color: #999;
+  font-size: 14px;
+  border-bottom: 1px dashed #c9c9c9;
+  width: 100%;
+  margin-bottom: 10px;
+  padding-bottom: 3px;
+}
+#page-content .item p.info {
+  margin-top: 10px;
+}
+
+#page-content .item img {
+  padding: 0px;
+  display: block;
+  max-width: 100%;
+}
+#page-content .item .bottom-item img {
+  border-radius: 50%;
+}
+#page-content .content-item {
+  padding: 10px 20px;
+}
+#page-content h3.title-item {
+  font-family: "Ek Mukta", sans-serif;
+  font-size: 28px;
+  margin: 7px 0 5px;
+}
+#page-content .content-item ul {
+  margin: 0;
+  font-size: 14px;
+}
+#page-content .content-item ul li a {
+  color: #555;
+}
+#page-content .bottom-item {
+  border-top: 1px solid #ddd;
+  min-height: 50px;
+}
+#page-content .share {
+}
+#page-content .list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+}
+#page-content .list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+#page-content .user {
+  color: #777;
+  font-size: 13px;
+  line-height: 2.8;
+  padding: 5px;
+}
+#page-content .user img {
+  width: 38px;
+  height: 38px;
+  float: right;
+  display: inline-block;
+  margin-left: 7px;
+  border-radius: 50%;
+}
+
+article {
+  background-color: #fff;
+  max-width: 750px;
+  box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.18);
+  text-align: justify;
+}
+article h2 {
+  padding-top: 50px;
+}
+article h3 {
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Contact-------------------------------- */
+/* ---------------------------------------------------------------------------- */
+.contact h2 {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#contact_form {
+  padding: 25px;
+}
+
+#ff label {
+  cursor: pointer;
+  margin: px 0;
+  display: block;
+  font-weight: bold;
+}
+#ff input {
+  display: block;
+  width: 100%;
+  color: #000;
+  padding: 10px;
+  margin: 5px 0 25px 0;
+}
+#ff textarea {
+  display: block;
+  width: 100%;
+  height: 200px;
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  margin: 5px 0 25px 0;
+}
+
+#ff .sendButton {
+  border: none;
+  cursor: pointer;
+  background-color: #333;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 100px;
+  color: #ffffff;
+}
+#ff .sendButton:hover {
+  background-color: #000;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Btn------------------------------------ */
+/* ---------------------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 0px 10px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+}
+.btn-share {
+  font-weight: 500;
+  color: #555;
+  border-right: 1px solid #ddd;
+  margin: 0;
+  border-radius: none;
+  height: 51px;
+  width: 75px;
+  margin-top: -1px;
+  padding: 14px;
+}
+.btn-like,
+.btn-comment {
+  font-weight: 500;
+  color: #555;
+  border-right: 1px solid #ddd;
+  margin: 0;
+  border-radius: none;
+  height: 51px;
+  width: 51px;
+  margin-top: -1px;
+  padding: 10px 5px 12px 0;
+  font-size: 23px;
+}
+.btn-more {
+  color: #555;
+  margin: 0;
+  border-radius: none;
+  height: 51px;
+  width: 50px;
+  margin-top: -1px;
+  padding: 8px 0 12px 0;
+  font-size: 25px;
+}
+
+.btn-search {
+  color: #333333;
+  background-color: #ddd;
+  padding: 6px 12px;
+}
+.btn-search:hover {
+  color: #333333;
+  background-color: #adadad;
+}
