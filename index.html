@@ -27,8 +27,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <!-- Custom Fonts <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css" type="text/css"> -->
-    
+    <!-- Custom Fonts  -->
+    <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <link rel="stylesheet" href="css/lightbox.css">
@@ -94,33 +94,37 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h2 class="modal-title" id="myModalLabel">我要发头条</h2>
+                    <h2 class="modal-title" id="myModalLabel">星云逃亡</h2>
                 </div>
                 <form id="toutiao_form">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>标题</label>
-                            <span class="help-block text-red"></span>
-                            <input type="text" class="form-control" name="inputTitle" id="inputTitle" placeholder="输入标题" />
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">内容</label>
-                            <span class="help-block text-red"></span>
-                            <textarea class="form-control" name="inputContent" id="inputContent" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">上传封面</label>
-                            <span class="help-block text-red"></span>
-                            <input type="file" name="InputFile" id="InputFile" />
-                            <p id="img_area"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>投放时长</label>
+                            <label>分数</label>
                             <span class="help-block text-red"></span>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="timeSpan" id="timeSpan" value="5" disabled="disabled">
+                                <input type="text" class="form-control" name="scoreSpan" id="scoreSpan" value="5" disabled="disabled">
                                 <div class="input-group-addon">
-                                    分钟
+                                    分
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>距离</label>
+                            <span class="help-block text-red"></span>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="distanceSpan" id="distanceSpan" value="5" disabled="disabled">
+                                <div class="input-group-addon">
+                                    米
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Coin</label>
+                            <span class="help-block text-red"></span>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="coinSpan" id="coinSpan" value="5" disabled="disabled">
+                                <div class="input-group-addon">
+                                    个
                                 </div>
                             </div>
                         </div>
@@ -129,7 +133,7 @@
                                 注意: 请安装
                                 <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet" style="color: red;">星云钱包拓展</a>
                             </div>
-                            <button type="submit" class="btn btn-info" id="submitbutton">我要发头条</button>
+                            <button type="button" class="btn btn-info" id="submitbutton">保存记录</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         </div>
                     </div>
@@ -182,6 +186,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/leftTime.min.js"></script>
     <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 
     <script type="text/javascript" src="js/nebPay.js"></script>
     <script type="text/javascript" src="js/nebulas.js"></script>
