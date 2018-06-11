@@ -1,3 +1,4 @@
+"use strict";
 var dappAddress = "n1jxW6mRZeGkAuNj44sQjAHJ45zHSoHVj8J";
 var netbase = "https://testnet.nebulas.io";
 var nebulas = require("nebulas"),
@@ -241,108 +242,34 @@ function comment(id, content) {
     $("#submitcomment").val("提交评论");
     $("#submitcomment").attr("disabled", false);
   }
-}
+};
+
 $(function () {
-  $("#clicklike").css("pointer-events", "none");
-  getPublishingBlog();
-  $("#publish").click(function () {
-    $("#inputTitle").val("");
-    $("#inputContent").val("");
-    $("#InputFile").val("");
-    $("#img_area").text("");
-    $("#menuheader").attr("style", "display:none;");
-    $("#myModal").modal("show");
-  });
-  $("#operate").click(function () {
-    $("#menuheader").attr("style", "display:none;");
-    $("#operateModal").modal("show");
-  });
-  $("#about").click(function () {
-    $("#menuheader").attr("style", "display:none;");
-    $("#aboutModal").modal("show");
-  });
-  $("#myModal").on("hide.bs.modal", function () {
-    $("#menuheader").attr("style", "display:block;");
-  });
-  $("#operateModal").on("hide.bs.modal", function () {
-    $("#menuheader").attr("style", "display:block;");
-  });
-  $("#aboutModal").on("hide.bs.modal", function () {
-    $("#menuheader").attr("style", "display:block;");
-  });
-
-  $("#clicklike").click(function () {
-    $("#showlike").attr("style", "color:red");
-    var id = $("#toplineid").text();
-    like(id);
-  });
-  $("#submitcomment").click(function () {
-    var id = $("#toplineid").text();
-    var content = $("#inputComment").val();
-    if (!content.length) {
-      alert("评论不能为空！");
-    } else {
-      comment(id, content);
-    }
-  });
-  $("#toutiao_form").validate({
-    debug: true,
-    rules: {
-      inputTitle: {
-        required: true,
-        maxlength: 15
-      },
-
-      inputContent: "required",
-      InputFile: "required"
-    },
-    messages: {
-      inputTitle: {
-        required: "标题不能为空！",
-        maxlength: "标题不可超过15个字符"
-      },
-      inputContent: "内容不能为空！",
-      InputFile: "封面不能为空！"
-    },
-    errorElement: "span",
-    errorPlacement: function (error, element) {
-      // 错误信息位置
-      // $(element).parent().addClass("has-error");
-      error.appendTo($(element).siblings("span"));
-    },
+  $("#submit_form").validate({
     submitHandler: function () {
-      var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
+      var NebPay = require("nebpay");
       var nebPay = new NebPay();
-      var img = new Image();
-      img.src = $("#pre_picture")[0].src;
-      (width = 640), //image resize
-        (quality = 0.5); //image quality
-      (canvas = document.createElement("canvas")),
-        (drawer = canvas.getContext("2d"));
-      canvas.width = width;
-      canvas.height = width * (img.height / img.width);
-      drawer.drawImage(img, 0, 0, canvas.width, canvas.height);
-      img.src = canvas.toDataURL("image/jpeg", quality);
-      var title = $("#inputTitle").val();
-      var content = $("#inputContent").val();
+      var score = $("#scoreSpan").val();
+      var distance = $("#distanceSpan").val();
+      var coin = $("#coinSpan").val();
+      console.log(score + "," + distance + "," + coin);
       var to = dappAddress;
       var value = "0";
       var callFunction = "publish";
       var callArgs = [];
-      callArgs.push(title);
-      callArgs.push(content);
-      callArgs.push(img.src);
+      callArgs.push(score);
+      callArgs.push(distance);
+      callArgs.push(coin);
       console.log(callArgs);
-      $("#submitbutton").val("头条发布中...");
+      $("#submitbutton").val("记录保存中...");
       $("#submitbutton").attr("disabled", true);
       nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
-        //使用nebpay的call接口去调用合约,
         listener: cbPush
       });
       function cbPush(resp) {
         console.log("response of push: " + resp);
         $("#submitbutton").attr("disabled", false);
-        $("#submitbutton").val("我要发头条");
+        $("#submitbutton").val("保存记录");
         $("#myModal").modal("hide");
       }
     }
