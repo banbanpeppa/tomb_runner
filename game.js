@@ -33057,14 +33057,12 @@ GEMIOLI.Score = function() {
         }
         GEMIOLI.SoundLoader.load("button").play();
         //alert("you got score");
-        $("#publish").click(function() {
         $("#inputTitle").val("");
         $("#inputContent").val("");
         $("#InputFile").val("");
         $("#img_area").text("");
         $("#menuheader").attr("style", "display:none;");
         $("#myModal").modal("show");
-        });
         //GEMIOLI.Shop.show(a.shopAttract);
         //a.shopAttract = 0
     });
