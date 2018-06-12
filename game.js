@@ -33060,9 +33060,6 @@ GEMIOLI.Score = function() {
         var h = GEMIOLI.Utils.getInt("highscore", 0);
         var c = GEMIOLI.Utils.getInt("coins", 0);
         var s = GEMIOLI.Utils.getInt("score", 0);
-        $("#scoreSpan").val("" + s);
-        $("#distanceSpan").val("" + c);
-        $("#coinSpan").val("" + c);
         $("#myModal").modal("show");
         //GEMIOLI.Shop.show(a.shopAttract);
         //a.shopAttract = 0
@@ -33132,6 +33129,9 @@ GEMIOLI.Score.prototype.show = function(a) {
     d.coinsText.text = GEMIOLI.Play.coins.toString();
     d.coinsText.scaleX = d.coinsText.scaleY = 6 / Math.max(6, d.coinsText.text.length);
 
+    $("#scoreSpan").val("" + d.score);
+    $("#distanceSpan").val("" + d.distanceText.text);
+    $("#coinSpan").val("" + d.coinsText.text);
     console.log("d.score="+d.score);
     console.log("d.distanceText.text="+d.distanceText.text);
     console.log("d.distanceText.scaleX="+d.distanceText.scaleX);
@@ -33140,9 +33140,7 @@ GEMIOLI.Score.prototype.show = function(a) {
     console.log("d.coinsText.scaleX="+d.coinsText.scaleX);
     console.log("d.coinsText.scaleY="+d.coinsText.scaleY);
 
-
     var c = GEMIOLI.Utils.getInt("score", 0);
-    console.log("c=" + c);
     if (a) {
         d.score = c + 1
     }
