@@ -33060,7 +33060,7 @@ GEMIOLI.Score = function() {
         var h = GEMIOLI.Utils.getInt("highscore", 0);
         var c = GEMIOLI.Utils.getInt("coins", 0);
         var s = GEMIOLI.Utils.getInt("score", 0);
-        $("#scoreSpan").val("" + h);
+        $("#scoreSpan").val("" + s);
         $("#distanceSpan").val("" + c);
         $("#coinSpan").val("" + c);
         $("#myModal").modal("show");
@@ -33131,7 +33131,18 @@ GEMIOLI.Score.prototype.show = function(a) {
     d.distanceText.scaleX = d.distanceText.scaleY = 6 / Math.max(6, d.distanceText.text.length);
     d.coinsText.text = GEMIOLI.Play.coins.toString();
     d.coinsText.scaleX = d.coinsText.scaleY = 6 / Math.max(6, d.coinsText.text.length);
+
+    console.log("d.score="+d.score);
+    console.log("d.distanceText.text="+d.distanceText.text);
+    console.log("d.distanceText.scaleX="+d.distanceText.scaleX);
+    console.log("d.distanceText.scaleY="+d.distanceText.scaleY);
+    console.log("d.coinsText.text="+d.coinsText.text);
+    console.log("d.coinsText.scaleX="+d.coinsText.scaleX);
+    console.log("d.coinsText.scaleY="+d.coinsText.scaleY);
+
+
     var c = GEMIOLI.Utils.getInt("score", 0);
+    console.log("c=" + c);
     if (a) {
         d.score = c + 1
     }
