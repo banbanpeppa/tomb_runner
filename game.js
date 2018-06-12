@@ -33057,7 +33057,12 @@ GEMIOLI.Score = function() {
         }
         GEMIOLI.SoundLoader.load("button").play();
         //alert("you got score");
-        $("#menuheader").attr("style", "display:none;");
+        var h = GEMIOLI.Utils.getInt("highscore", 0);
+        var c = GEMIOLI.Utils.getInt("coins", 0);
+        var s = GEMIOLI.Utils.getInt("score", 0);
+        $("#scoreSpan").val("" + h);
+        $("#distanceSpan").val("" + c);
+        $("#coinSpan").val("" + c);
         $("#myModal").modal("show");
         //GEMIOLI.Shop.show(a.shopAttract);
         //a.shopAttract = 0

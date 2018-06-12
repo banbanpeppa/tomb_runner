@@ -76,8 +76,8 @@ function readFile() {
 
 function getComments(id) {
   var nebulas = require("nebulas"),
-        Account = nebulas.Account,
-        neb = new nebulas.Neb();
+    Account = nebulas.Account,
+    neb = new nebulas.Neb();
   neb.setRequest(new nebulas.HttpRequest(netbase));
   var from = Account.NewAccount().getAddressString();
   var value = "0";
@@ -129,60 +129,37 @@ function getPublishingBlog() {
 };
 
 $(function () {
-  $("#submitbutton").click(function() {
-    var NebPay = require("nebpay");
-      var nebPay = new NebPay();
-      var score = $("#scoreSpan").val();
-      var distance = $("#distanceSpan").val();
-      var coin = $("#coinSpan").val();
-      console.log(score + "," + distance + "," + coin);
-      var to = dappAddress;
-      var value = "0";
-      var callFunction = "publish";
-      var callArgs = [];
-      callArgs.push(score);
-      callArgs.push(distance);
-      callArgs.push(coin);
-      console.log(callArgs);
-      $("#submitbutton").val("记录保存中...");
+  $("#submitbutton").click(function () {
+    if (typeof webExtensionWallet === "undefined") {
+      $("#noExtension").attr("style", "display:block;");
       $("#submitbutton").attr("disabled", true);
-      nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
-        listener: cbPush
-      });
-      function cbPush(resp) {
-        console.log("response of push: " + resp);
-        $("#submitbutton").attr("disabled", false);
-        $("#submitbutton").val("保存记录");
-        $("#myModal").modal("hide");
-      };
-  });
-  $("#sdfsdfsf").validate({
-    submitHandler: function () {
-      var NebPay = require("nebpay");
-      var nebPay = new NebPay();
-      var score = $("#scoreSpan").val();
-      var distance = $("#distanceSpan").val();
-      var coin = $("#coinSpan").val();
-      console.log(score + "," + distance + "," + coin);
-      var to = dappAddress;
-      var value = "0";
-      var callFunction = "publish";
-      var callArgs = [];
-      callArgs.push(score);
-      callArgs.push(distance);
-      callArgs.push(coin);
-      console.log(callArgs);
-      $("#submitbutton").val("记录保存中...");
-      $("#submitbutton").attr("disabled", true);
-      nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
-        listener: cbPush
-      });
-      function cbPush(resp) {
-        console.log("response of push: " + resp);
-        $("#submitbutton").attr("disabled", false);
-        $("#submitbutton").val("保存记录");
-        $("#myModal").modal("hide");
-      }
+    } else {
+      $("#submitbutton").attr("disabled", false);
     }
+    var NebPay = require("nebpay");
+    var nebPay = new NebPay();
+    var score = $("#scoreSpan").val();
+    var distance = $("#distanceSpan").val();
+    var coin = $("#coinSpan").val();
+    console.log(score + "," + distance + "," + coin);
+    var to = dappAddress;
+    var value = "0";
+    var callFunction = "publish";
+    var callArgs = [];
+    callArgs.push(score);
+    callArgs.push(distance);
+    callArgs.push(coin);
+    console.log(callArgs);
+    $("#submitbutton").val("记录保存中...");
+    $("#submitbutton").attr("disabled", true);
+    nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
+      listener: cbPush
+    });
+    function cbPush(resp) {
+      console.log("response of push: " + resp);
+      $("#submitbutton").attr("disabled", false);
+      $("#submitbutton").val("保存记录");
+      $("#myModal").modal("hide");
+    };
   });
 });
