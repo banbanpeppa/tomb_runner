@@ -87,6 +87,14 @@
 
 <body>
     <div id="container"></div>
+    <div id="mask" class="mask" hidden>
+        <div class="sk-folding-cube">
+          <div class="sk-cube1 sk-cube"></div>
+          <div class="sk-cube2 sk-cube"></div>
+          <div class="sk-cube4 sk-cube"></div>
+          <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -94,12 +102,12 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h2 class="modal-title" id="myModalLabel">星云逃亡</h2>
+                    <h2 class="modal-title" id="myModalLabel">NAS Runner</h2>
                 </div>
                 <form id="submit_form">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>分数</label>
+                            <label>Score</label>
                             <span class="help-block text-red"></span>
                             <div class="input-group">
                                 <input type="text" class="form-control" name="scoreSpan" id="scoreSpan" value="5" disabled="disabled">
@@ -109,12 +117,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>距离</label>
+                            <label>Distance</label>
                             <span class="help-block text-red"></span>
                             <div class="input-group">
                                 <input type="text" class="form-control" name="distanceSpan" id="distanceSpan" value="5" disabled="disabled">
                                 <div class="input-group-addon">
-                                    米
+                                    米 
                                 </div>
                             </div>
                         </div>
@@ -127,6 +135,9 @@
                                     个
                                 </div>
                             </div>
+                        </div>
+                        <div style="display:none;" id="sdchash">
+                            caa93ee5cff58f792adcdda96a7282bc46e402ada109699ff80fecc30932e31a
                         </div>
                         <div class="modal-footer">
                             <div class="noExtension" style="display:none;" id="noExtension">
@@ -143,7 +154,7 @@
     </div>
     <script type="text/javascript">
         var SpilData = {
-            id: '576742227280298086',
+            //id: '576742227280298086',
             pauseGame: function () {
                 if (typeof GEMIOLI !== 'undefined' && GEMIOLI.Application)
                     GEMIOLI.Application.dispatchEvent({ type: 'blur' });
@@ -186,6 +197,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/leftTime.min.js"></script>
     <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 
     <script type="text/javascript" src="js/nebPay.js"></script>
