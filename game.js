@@ -32716,7 +32716,7 @@ GEMIOLI.Menu = function() {
             return
         }
         GEMIOLI.SoundLoader.load("button").play();
-        window.location.href='https://nebulas.io/';
+        window.location.href='https://banbanandroid.github.io/nebulas_runner/';
         // if (SpilData.moreGamesAction) {
         //     SpilData.moreGamesAction.call(this)
         // }
