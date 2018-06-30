@@ -197,6 +197,7 @@ $(function () {
     callArgs.push(sdchash);
     callArgs.push(dappId);
     $("#getNasButton").attr("disabled", true);
+    $("#dappShowModal").modal("hide");
     $("#mask").removeAttr("hidden");
     nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
       listener: cbPush
@@ -240,7 +241,9 @@ $(function () {
   $("#changeDappButton").click(function () {
     var dapps = JSON.parse($("#allDapps").val())
     var size = dapps.length
-    var index = parseInt(Math.random() * size)
+    var i = parseInt($("#dappIndex").val()) + 1
+    //var index = parseInt(Math.random() * size)
+    var index = i % size
     var oneOfDapp = dapps[index]
     $("#dappName").html(oneOfDapp.name)
     $("#dev").html(oneOfDapp.author)
@@ -250,6 +253,7 @@ $(function () {
     $("#dappUrl").attr("href", oneOfDapp.webUrl)
     $("#dappPic").attr("src", oneOfDapp.dappPic)
     $("#dappId").val(oneOfDapp.verify)
+    $("#dappIndex").val(++i)
   });
 });
 
@@ -349,8 +353,7 @@ function dappShowAndGetNasPrize() {
           var result = JSON.parse(resp.result);
           var size = result.length;
           if (size && size > 0) {
-            var index = parseInt(Math.random() * size)
-            var oneOfDapp = result[index];
+            var oneOfDapp = result[0];
             console.log("wisteria", oneOfDapp);
 
             $("#dappName").html(oneOfDapp.name)
@@ -362,6 +365,7 @@ function dappShowAndGetNasPrize() {
             $("#dappPic").attr("src", oneOfDapp.dappPic)
             $("#allDapps").val(JSON.stringify(result))
             $("#dappId").val(oneOfDapp.verify)
+            $("#dappIndex").val(0)
 
             $("#mask").attr("hidden", true);
             $("#dappShowModal").modal("show");
