@@ -197,7 +197,6 @@ $(function () {
     callArgs.push(sdchash);
     callArgs.push(dappId);
     $("#getNasButton").attr("disabled", true);
-    $("#dappShowModal").modal("hide");
     $("#mask").removeAttr("hidden");
     nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
       listener: cbPush
