@@ -1,6 +1,6 @@
 "use strict";
 var dappAddress1 = "n1koy3jwVv1RtZ3DkHTbH6VHWkZFT4aiNW3";
-var dappAddress2 = "n1nP5gEhJFbe1ZbHXVWsZNoV1hsd2ZGYoMp";
+var dappAddress2 = "n1gsLRXcyUKmrD9unVfgB4QyEMNoTJ4ziSJ";
 var netbase = "https://mainnet.nebulas.io";
 
 window.onload = function () {
@@ -363,12 +363,12 @@ function dappShowAndGetNasPrize() {
             $("#dappPic").attr("src", oneOfDapp.dappPic)
             $("#allDapps").val(JSON.stringify(result))
             $("#dappId").val(oneOfDapp.verify)
-            console.log('remainNas', oneOfDapp.remainNas)
 
             $("#mask").attr("hidden", true);
             $("#dappShowModal").modal("show");
           } else {
             console.log('gerDappAllowed', '没有Dapp信息')
+            toast("目前还没有DAPP上架");
             $("#mask").attr("hidden", true)
           }
         } else {
@@ -377,6 +377,7 @@ function dappShowAndGetNasPrize() {
       })
       .catch(function (err) {
         toast(err);
+        $("#mask").removeAttr("hidden");
       });
   }
 }
