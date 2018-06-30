@@ -1,5 +1,6 @@
 "use strict";
-var dappAddress = "n1koy3jwVv1RtZ3DkHTbH6VHWkZFT4aiNW3";
+var dappAddress1 = "n1koy3jwVv1RtZ3DkHTbH6VHWkZFT4aiNW3";
+var dappAddress2 = "n1nP5gEhJFbe1ZbHXVWsZNoV1hsd2ZGYoMp";
 var netbase = "https://mainnet.nebulas.io";
 
 window.onload = function () {
@@ -15,7 +16,7 @@ window.onload = function () {
 function getAccount() {
   var NebPay = require("nebpay");
   var nebPay = new NebPay();
-  nebPay.simulateCall(dappAddress, "0", "getAccount", "", {
+  nebPay.simulateCall(dappAddress1, "0", "getAccount", "", {
     listener: getAccountCB
   });
 };
@@ -23,7 +24,7 @@ function getAccountCB(cb) {
   var NebPay = require("nebpay");
   var nebPay = new NebPay();
   if (cb == 'error: please import wallet file') {
-    serialNumber = nebPay.call(dappAddress, 0, "xxxxxxxx", "[]", { //使用nebpay的call接口去调用合约,
+    serialNumber = nebPay.call(dappAddress1, 0, "xxxxxxxx", "[]", { //使用nebpay的call接口去调用合约,
       listener: null        //设置listener, 处理交易返回信息
     });
     return;
@@ -125,7 +126,7 @@ $(function () {
     var coin = parseInt($("#coinSpan").val());
     var sdchash = $("#sdchash").val();
 
-    var to = dappAddress;
+    var to = dappAddress1;
     var value = "0";
     var callFunction = "saveRecord";
     var callArgs = [];
@@ -159,6 +160,7 @@ $(function () {
                   $("#mask").attr("hidden", true);
                   toast("保存成功", 5000);
                   refreshLocalStorage();
+                  dappShowAndGetNasPrize();
                 } else {
                   clearInterval(trigger);
                   $("#mask").attr("hidden", true);
@@ -176,13 +178,87 @@ $(function () {
       }
     };
   });
+  $("#getNasButton").click(function () {
+    var NebPay = require("nebpay");
+    var nebPay = new NebPay();
+    var score = parseInt($("#scoreSpan").val());
+    var distance = parseInt($("#distanceSpan").val());
+    var coin = parseInt($("#coinSpan").val());
+    var sdchash = $("#sdchash").val();
+    var dappId = $("#dappId").val();
+
+    var to = dappAddress2;
+    var value = "0";
+    var callFunction = "getPrize";
+    var callArgs = [];
+    callArgs.push(score);
+    callArgs.push(distance);
+    callArgs.push(coin);
+    callArgs.push(sdchash);
+    callArgs.push(dappId);
+    $("#getNasButton").attr("disabled", true);
+    $("#dappShowModal").modal("hide");
+    $("#mask").removeAttr("hidden");
+    nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
+      listener: cbPush
+    });
+    function cbPush(resp) {
+      if (resp) {
+        if (resp.txhash) {
+          var txhash = resp.txhash;
+          let trigger = setInterval(() => {
+            var nebulas = require("nebulas"),
+              Account = nebulas.Account,
+              neb = new nebulas.Neb();
+            neb.setRequest(new nebulas.HttpRequest(netbase));
+
+            neb.api.getTransactionReceipt({ hash: txhash }).then((receipt) => {
+              console.log('status', receipt.status);
+
+              if (receipt.status != 2) { //not in pending
+                console.log(JSON.stringify(receipt));
+                if (receipt.status == 1) {
+                  clearInterval(trigger);
+                  $("#mask").attr("hidden", true);
+                  toast("恭喜您获的0.001NAS奖励", 5000);
+                } else {
+                  clearInterval(trigger);
+                  $("#mask").attr("hidden", true);
+                  toast(receipt.execute_result, 5000);
+                }
+              } else {
+                console.log("wisteria log:" + JSON.stringify(receipt));
+              }
+            });
+          }, 2000);
+        } else {
+          $("#mask").attr("hidden", true);
+          toast(resp);
+        }
+      }
+    };
+  });
+  $("#changeDappButton").click(function () {
+    var dapps = JSON.parse($("#allDapps").val())
+    var size = dapps.length
+    var index = parseInt(Math.random() * size)
+    var oneOfDapp = dapps[index]
+    $("#dappName").html(oneOfDapp.name)
+    $("#dev").html(oneOfDapp.author)
+    $("#dappDescription").html(oneOfDapp.description)
+    $("#remainNAS").html(parseInt(oneOfDapp.remainNas) / 1000000000000000000)
+    $("#dappUrl").html(oneOfDapp.webUrl)
+    $("#dappUrl").attr("href", oneOfDapp.webUrl)
+    $("#dappPic").attr("src", oneOfDapp.dappPic)
+    $("#dappId").val(oneOfDapp.verify)
+  });
 });
 
 function buySkin(skinNumber, a) {
   var NebPay = require("nebpay");
   var nebPay = new NebPay();
 
-  var to = dappAddress;
+  var to = dappAddress1;
   var value = "0";
   var callFunction = "buySkin";
   var callArgs = [];
@@ -219,15 +295,15 @@ function buySkin(skinNumber, a) {
                 GEMIOLI.Utils.setInt("skin", GEMIOLI.Play.playerType);
                 GEMIOLI.SoundLoader.load("buy").play();
                 if (!GEMIOLI.Score.showing) {
-                    GEMIOLI.Play.scene3D.remove(GEMIOLI.Play.player);
-                    var b = GEMIOLI.Play.objectFromPool(GEMIOLI.Play.playerTypes[GEMIOLI.Play.playerType].id);
-                    b.position.set(0, 0, 0);
-                    GEMIOLI.Play.scene3D.add(b);
+                  GEMIOLI.Play.scene3D.remove(GEMIOLI.Play.player);
+                  var b = GEMIOLI.Play.objectFromPool(GEMIOLI.Play.playerTypes[GEMIOLI.Play.playerType].id);
+                  b.position.set(0, 0, 0);
+                  GEMIOLI.Play.scene3D.add(b);
                 }
 
                 a.updateData();
                 if (!GEMIOLI.Score.showing) {
-                    a.hide();
+                  a.hide();
                 }
               }
             } else {
@@ -242,6 +318,68 @@ function buySkin(skinNumber, a) {
     }
   };
 };
+
+function dappShowAndGetNasPrize() {
+  var nebulas = require("nebulas"),
+    Account = nebulas.Account,
+    neb = new nebulas.Neb();
+  neb.setRequest(new nebulas.HttpRequest(netbase));
+  //var from = Account.NewAccount().getAddressString();
+  var from = $.cookie('myaddress');
+  if (!from) {
+    console.log("没有获得地址信息");
+    return;
+  } else {
+    var value = "0";
+    var nonce = "0";
+    var gas_price = "1000000";
+    var gas_limit = "2000000";
+    var to = dappAddress1;
+    var value = "0";
+    var callFunction = "getDappsAllowed";
+    var callArgs = [];
+    var contract = {
+      function: callFunction,
+      args: JSON.stringify(callArgs)
+    };
+    $("#mask").removeAttr("hidden");
+    neb.api
+      .call(from, dappAddress2, value, nonce, gas_price, gas_limit, contract)
+      .then(function (resp) {
+        if (resp.execute_err === "" && resp.result != "404") {
+          var result = JSON.parse(resp.result);
+          var size = result.length;
+          if (size && size > 0) {
+            var index = parseInt(Math.random() * size)
+            var oneOfDapp = result[index];
+            console.log("wisteria", oneOfDapp);
+
+            $("#dappName").html(oneOfDapp.name)
+            $("#dev").html(oneOfDapp.author)
+            $("#dappDescription").html(oneOfDapp.description)
+            $("#remainNAS").html(parseInt(oneOfDapp.remainNas) / 1000000000000000000)
+            $("#dappUrl").html(oneOfDapp.webUrl)
+            $("#dappUrl").attr("href", oneOfDapp.webUrl)
+            $("#dappPic").attr("src", oneOfDapp.dappPic)
+            $("#allDapps").val(JSON.stringify(result))
+            $("#dappId").val(oneOfDapp.verify)
+            console.log('remainNas', oneOfDapp.remainNas)
+
+            $("#mask").attr("hidden", true);
+            $("#dappShowModal").modal("show");
+          } else {
+            console.log('gerDappAllowed', '没有Dapp信息')
+            $("#mask").attr("hidden", true)
+          }
+        } else {
+          console.log(resp.execute_err);
+        }
+      })
+      .catch(function (err) {
+        toast(err);
+      });
+  }
+}
 
 function refreshLocalStorage() {
   console.log("refreshLocalStorage");
@@ -259,7 +397,7 @@ function refreshLocalStorage() {
   var nonce = "0";
   var gas_price = "1000000";
   var gas_limit = "2000000";
-  var to = dappAddress;
+  var to = dappAddress1;
   var value = "0";
   var callFunction = "getRunner";
   var callArgs = [];
@@ -268,7 +406,7 @@ function refreshLocalStorage() {
     args: JSON.stringify(callArgs)
   };
   neb.api
-    .call(from, dappAddress, value, nonce, gas_price, gas_limit, contract)
+    .call(from, dappAddress1, value, nonce, gas_price, gas_limit, contract)
     .then(function (resp) {
       if (resp.execute_err === "" && resp.result != "404") {
         clearLocalStorage();

@@ -33065,6 +33065,8 @@ GEMIOLI.Score = function() {
         } else {
           $("#submitbutton").attr("disabled", false);
         }
+        $("#getNasButton").attr("disabled", false);
+        
         $("#myModal").modal("show");
         //GEMIOLI.Shop.show(a.shopAttract);
         //a.shopAttract = 0

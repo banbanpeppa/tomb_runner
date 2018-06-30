@@ -1,0 +1,16 @@
+.content-cell {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+}
+
+.cell-left {
+    max-width: 88px !important;
+    height: 88px;
+    margin: 0 15px 15px 0; 
+}
+
+.cell-right {
+    flex: 1;
+    margin-bottom: 15px;
+}

@@ -30,6 +30,7 @@
     <!-- Custom Fonts  -->
     <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dappshow.css">
 
     <link rel="stylesheet" href="css/lightbox.css">
     <style>
@@ -77,10 +78,6 @@
             font-size: 13px;
             font-weight: bold;
             text-align: center;
-        }
-
-        a {
-            color: #ffffff;
         }
     </style>
 </head>
@@ -147,6 +144,51 @@
                             <button type="button" class="btn btn-info" id="submitbutton">保存记录</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dappShowModal" tabindex="-1" role="dialog" aria-labelledby="dappShowModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="dappShowModalLabel">恭喜您获得DAPP:<span id="dappName">NAS Runner</span>提供的NAS奖励金</h3>
+                </div>
+                <form id="submit_form">
+                    <div class="modal-body">
+                        <div class="content-cell">
+                            <img class="cell-left" id="dappPic" src="icon.png">
+
+                            <div class="cell-right">
+                              <h4 class="media-heading" style="font-weight:bold">NAS Runner</h4>
+                              <div style="text-align: left">
+                                <span>Deverloper: </span><span id="dev">n1VNfeQVibqomSFQbTZSfVtHuSwuTtUdDGY</span>&nbsp;
+                              </div>
+                              <p style="line-height:1.8;" id="dappDescription">Nebulas Runner是一款奔跑逃亡类游戏，玩家可以通过逃亡获得分数，同时在逃亡过程中可以吃到Runner币(简称R币),玩家获得的R币可以用于购买角色使用，使用不同的角色进行逃亡游戏会有不同的体验。每一周，系统会选举一名最高分获得者，进行0.1NAS的奖励，每周的周日晚上8点会颁发奖励。用户在首页可以在“我的记录”中查询自己历史保存过的记录信息，也可以获得当前最高分获得者的分数，可以选择挑战对应的最高分。Nebulas Runner的保存记录对分数进行了一定处理，用户不能对分数进行篡改之后提交，智能合约会进行一致性判断，但凡是更改过的结果都是无法正常提交的。Nebulas Runner！Funny NAS Game！</p>
+
+                              <div style="text-align: left; font-weight: bold">
+                                <span>剩余奖金: </span><span id="remainNAS">0.01</span><span>NAS</span>&nbsp;
+                              </div>
+                              <div style="text-align: left; ">
+                                <span style="font-weight: bold">DAPP链接: </span><a target="_blank" href="https://banbanandroid.github.io/nebulas_runner/" id="dappUrl" >https://banbanandroid.github.io/nebulas_runner/</a>&nbsp;
+                              </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" id="getNasButton">获取奖励金</button>
+                            <button type="button" class="btn btn-info" id="changeDappButton">换一个</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">放弃领取</button>
+                            <div class="noExtension" style="display:none;" id="dappShowNoExtension">
+                                注意: 请安装
+                                <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet" style="color: red;">星云钱包拓展</a>
+                            </div>
+                        </div>
+                        <div style="display:none;" id="allDapps"></div>
+                        <div style="display:none;" id="dappId"></div>
                     </div>
                 </form>
             </div>
